@@ -140,7 +140,7 @@ class _$RegisterModelDto extends RegisterModelDto {
   @override
   final BuiltList<GdprConsentModelDto>? gdprConsents;
   @override
-  final String? isRegisterSuccess;
+  final bool? isRegisterSuccess;
   @override
   final String? message;
   @override
@@ -782,9 +782,9 @@ class RegisterModelDtoBuilder
   set gdprConsents(ListBuilder<GdprConsentModelDto>? gdprConsents) =>
       _$this._gdprConsents = gdprConsents;
 
-  String? _isRegisterSuccess;
-  String? get isRegisterSuccess => _$this._isRegisterSuccess;
-  set isRegisterSuccess(String? isRegisterSuccess) =>
+  bool? _isRegisterSuccess;
+  bool? get isRegisterSuccess => _$this._isRegisterSuccess;
+  set isRegisterSuccess(bool? isRegisterSuccess) =>
       _$this._isRegisterSuccess = isRegisterSuccess;
 
   String? _message;

@@ -64,7 +64,9 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
               if (value)
                 {
                   ref.refresh(customerInfoProvider.future),
-                  ref.refresh(shoppingCartFutureProvider.future).whenComplete(() => ref.refresh(shoppingCartTotalsProvider.future)),
+                  ref
+                      .refresh(shoppingCartFutureProvider.future)
+                      .whenComplete(() => ref.refresh(shoppingCartTotalsProvider.future)),
                   showDialog(
                     barrierDismissible: false,
                     context: context,
@@ -131,6 +133,7 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   padding: const EdgeInsets.only(bottom: 8.0),
@@ -338,34 +341,29 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.only(bottom: 8.0),
                   alignment: Alignment.centerLeft,
-                  child: Text(context.locale.global_required),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-
-    items.add(
-      Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 15),
                   child: Text(
                     "Are you registered under MSME?:",
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
-                MsmeWidget(key: BusinessScreen.msmeKey, controller: _msmeController),
+                MsmeWidget(
+                  key: BusinessScreen.msmeKey,
+                  controller: _msmeController,
+                ),
+                if (_msmeController.text == "Y")
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: CustomerTextFormField(
+                      "UMA NUMBER",
+                      value: businessRegisterInfo.uamNumber,
+                      (value) => businessRegisterInfo.uamNumber = value ?? '',
+                      enabled: !state.isLoading,
+                      icon: Icons.text_fields,
+                      submitted: !_submitted,
+                    ),
+                  ),
                 Row(
                   children: [
                     Checkbox(
@@ -376,9 +374,17 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                         });
                       },
                     ),
-                    const Text("Are you dealer?", style: TextStyle(fontSize: 16))
+                    const Text(
+                      "Are you dealer?",
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ],
-                )
+                ),
+                Container(
+                  padding: const EdgeInsets.only(top: 10),
+                  alignment: Alignment.centerLeft,
+                  child: Text(context.locale.global_required),
+                ),
               ],
             ),
           ),

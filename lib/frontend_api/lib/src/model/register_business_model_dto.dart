@@ -333,7 +333,7 @@ abstract class RegisterBusinessModelDto implements Built<RegisterBusinessModelDt
   bool? get isDealer;
 
   @BuiltValueField(wireName: r'is_register_success')
-  String? get isRegisterSuccess;
+  bool? get isRegisterSuccess;
 
   @BuiltValueField(wireName: r'message')
   String? get message;
@@ -860,7 +860,7 @@ class _$RegisterBusinessModelDtoSerializer implements PrimitiveSerializer<Regist
       yield r'year_of_establishment_id';
       yield serializers.serialize(
         object.yearOfEstablishmentId,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.landlineNumber != null) {
@@ -874,21 +874,21 @@ class _$RegisterBusinessModelDtoSerializer implements PrimitiveSerializer<Regist
       yield r'industry_type_id';
       yield serializers.serialize(
         object.industryTypeId,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.isMsmeRegistered != null) {
       yield r'is_msme_registered';
       yield serializers.serialize(
         object.isMsmeRegistered,
-        specifiedType: const FullType.nullable(bool),
+        specifiedType: const FullType(bool),
       );
     }
     if (object.industrySectorId != null) {
       yield r'industry_sector_id';
       yield serializers.serialize(
         object.industrySectorId,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.uamNumber != null) {
@@ -909,14 +909,14 @@ class _$RegisterBusinessModelDtoSerializer implements PrimitiveSerializer<Regist
       yield r'is_dealer';
       yield serializers.serialize(
         object.isDealer,
-        specifiedType: const FullType.nullable(bool),
+        specifiedType: const FullType(bool),
       );
     }
     if (object.isRegisterSuccess != null) {
       yield r'is_register_success';
       yield serializers.serialize(
         object.isRegisterSuccess,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(bool),
       );
     }
     if (object.message != null) {
@@ -1500,7 +1500,7 @@ class _$RegisterBusinessModelDtoSerializer implements PrimitiveSerializer<Regist
         case r'landline_number':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
+            specifiedType: const FullType.nullable(String),
           ) as String;
           result.landlineNumber = valueDes;
           break;
@@ -1514,7 +1514,7 @@ class _$RegisterBusinessModelDtoSerializer implements PrimitiveSerializer<Regist
         case r'demand_agreegator_number':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
+            specifiedType: const FullType.nullable(String),
           ) as String;
           result.demandAgreegatorNumber = valueDes;
           break;
@@ -1542,8 +1542,8 @@ class _$RegisterBusinessModelDtoSerializer implements PrimitiveSerializer<Regist
         case r'is_register_success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+            specifiedType: const FullType(bool),
+          ) as bool?;
           if (valueDes == null) continue;
           result.isRegisterSuccess = valueDes;
           break;

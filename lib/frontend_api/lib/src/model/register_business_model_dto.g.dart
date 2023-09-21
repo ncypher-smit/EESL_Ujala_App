@@ -162,7 +162,7 @@ class _$RegisterBusinessModelDto extends RegisterBusinessModelDto {
   @override
   final bool? isDealer;
   @override
-  final String? isRegisterSuccess;
+  final bool? isRegisterSuccess;
   @override
   final String? message;
   @override
@@ -918,9 +918,9 @@ class RegisterBusinessModelDtoBuilder
   bool? get isDealer => _$this._isDealer;
   set isDealer(bool? isDealer) => _$this._isDealer = isDealer;
 
-  String? _isRegisterSuccess;
-  String? get isRegisterSuccess => _$this._isRegisterSuccess;
-  set isRegisterSuccess(String? isRegisterSuccess) =>
+  bool? _isRegisterSuccess;
+  bool? get isRegisterSuccess => _$this._isRegisterSuccess;
+  set isRegisterSuccess(bool? isRegisterSuccess) =>
       _$this._isRegisterSuccess = isRegisterSuccess;
 
   String? _message;

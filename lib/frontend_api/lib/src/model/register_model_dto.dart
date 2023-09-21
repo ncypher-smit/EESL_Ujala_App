@@ -285,7 +285,7 @@ abstract class RegisterModelDto implements Built<RegisterModelDto, RegisterModel
   BuiltList<GdprConsentModelDto>? get gdprConsents;
 
   @BuiltValueField(wireName: r'is_register_success')
-  String? get isRegisterSuccess;
+  bool? get isRegisterSuccess;
 
   @BuiltValueField(wireName: r'message')
   String? get message;
@@ -782,7 +782,7 @@ class _$RegisterModelDtoSerializer implements PrimitiveSerializer<RegisterModelD
       yield r'is_register_success';
       yield serializers.serialize(
         object.isRegisterSuccess,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(bool),
       );
     }
     if (object.message != null) {
@@ -1313,8 +1313,8 @@ class _$RegisterModelDtoSerializer implements PrimitiveSerializer<RegisterModelD
         case r'is_register_success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+            specifiedType: const FullType(bool),
+          ) as bool?;
           if (valueDes == null) continue;
           result.isRegisterSuccess = valueDes;
           break;
