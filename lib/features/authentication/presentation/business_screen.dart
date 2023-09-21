@@ -286,6 +286,7 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                 ),
 
                 ///---------------------- Landline Number ---------------------///
+
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: CustomerTextFormField(
@@ -295,6 +296,10 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                     enabled: !state.isLoading,
                     icon: Icons.phone_in_talk,
                     submitted: !_submitted,
+                    isPhone: true,
+                    maxLength: 10,
+                    minLength: 10,
+                    required: false,
                   ),
                 ),
 
@@ -308,6 +313,8 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                     enabled: !state.isLoading,
                     icon: Icons.agriculture_outlined,
                     submitted: !_submitted,
+                    maxLength: 40,
+                    required: false,
                   ),
                 ),
 
@@ -322,6 +329,9 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                     icon: Icons.credit_card_outlined,
                     submitted: !_submitted,
                     required: true,
+                    textCapitalization: TextCapitalization.characters,
+                    minLength: 10,
+                    maxLength: 10,
                   ),
                 ),
 
@@ -335,6 +345,9 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                     enabled: !state.isLoading,
                     icon: Icons.text_fields,
                     submitted: !_submitted,
+                    maxLength: 10,
+                    minLength: 10,
+                    required: true,
                   ),
                 ),
                 Container(
@@ -415,7 +428,6 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                       submitted: !_submitted,
                       icon: Icons.person,
                       required: businessRegisterInfo.firstNameRequired ?? false,
-                      minLength: 3,
                     ),
                   ),
 
@@ -430,7 +442,6 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                       submitted: !_submitted,
                       icon: Icons.person,
                       required: businessRegisterInfo.lastNameRequired ?? false,
-                      minLength: 3,
                     ),
                   ),
                 if (businessRegisterInfo.usernamesEnabled ?? false)
@@ -452,7 +463,6 @@ class _BusinessRegisterInfoState extends ConsumerState<BusinessRegisterInfoConte
                     context.locale.auth_email,
                     (value) => businessRegisterInfo.email = value,
                     isEmail: true,
-                    showRequired: true,
                     icon: Icons.email,
                     value: businessRegisterInfo.email,
                     submitted: !_submitted,

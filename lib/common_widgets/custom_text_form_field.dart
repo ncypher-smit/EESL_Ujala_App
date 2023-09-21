@@ -33,33 +33,43 @@ class CustomerTextFormField extends ConsumerStatefulWidget {
   final bool isDate;
   final int maxLines;
   final IconData? icon;
+  final bool isPhone;
+  TextCapitalization? textCapitalization = TextCapitalization.none;
+
   // ignore: use_key_in_widget_constructors
-  CustomerTextFormField(
-    this.name,
-    this.onSaved, {
-    this.icon,
-    this.value,
-    this.controller,
-    this.enabled = true,
-    this.obscureText = false,
-    key,
-    this.onEditingComplete,
-    this.onTap,
-    this.hintText,
-    this.isEmail = false,
-    this.isDate = false,
-    this.submitted = false,
-    int? minLength,
-    int? maxLength,
-    this.required = false,
-    this.showRequired = true,
-    this.showOptional = false,
-    bool notEmpty = false,
-    this.maxLines = 1,
-  }) {
+  CustomerTextFormField(this.name, this.onSaved,
+      {this.icon,
+      this.value,
+      this.controller,
+      this.enabled = true,
+      this.obscureText = false,
+      key,
+      this.onEditingComplete,
+      this.onTap,
+      this.hintText,
+      this.isEmail = false,
+      this.isDate = false,
+      this.submitted = false,
+      int? minLength,
+      int? maxLength,
+      this.required = false,
+      this.showRequired = true,
+      this.showOptional = false,
+      bool notEmpty = false,
+      this.maxLines = 1,
+      this.isPhone = false,
+      this.textCapitalization}) {
     _metaData.key = key ?? Key('TextFormField.$name');
 
-    _metaData.validator = TextValidator(name, isEmail: isEmail, notEmpty: notEmpty, minLength: minLength, maxLength: maxLength, required: required);
+    _metaData.validator = TextValidator(
+      name,
+      isEmail: isEmail,
+      isPhone: isPhone,
+      notEmpty: notEmpty,
+      minLength: minLength,
+      maxLength: maxLength,
+      required: required,
+    );
   }
 
   @override
@@ -72,10 +82,12 @@ class CustomerTextFormField extends ConsumerStatefulWidget {
       keyboardType = TextInputType.emailAddress;
     }
 
+    if (isPhone) {
+      keyboardType = TextInputType.phone;
+    }
     if (isDate) {
       keyboardType = TextInputType.none;
     }
-
     return keyboardType;
   }
 }
@@ -133,6 +145,7 @@ class _CustomerTextFormFieldState extends ConsumerState<CustomerTextFormField> {
           keyboardType: widget.getKeyboardType(),
           onSaved: widget.onSaved,
           onTap: widget.onTap,
+          textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
           onEditingComplete: widget.onEditingComplete,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           obscureText: widget.obscureText,
@@ -153,10 +166,18 @@ class TextValidator {
   final bool required;
   final bool notEmpty;
   final bool isEmail;
-
+  final bool isPhone;
   final String fieldName;
 
-  TextValidator(this.fieldName, {this.minLength, this.maxLength, this.required = false, this.notEmpty = false, this.isEmail = false}) {
+  TextValidator(
+    this.fieldName, {
+    this.minLength,
+    this.maxLength,
+    this.required = false,
+    this.notEmpty = false,
+    this.isPhone = false,
+    this.isEmail = false,
+  }) {
     if (minLength != null) {
       _minLengthValidator = MinLengthStringValidator(minLength!);
     }
