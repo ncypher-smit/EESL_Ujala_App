@@ -162,6 +162,10 @@ class _$RegisterBusinessModelDto extends RegisterBusinessModelDto {
   @override
   final bool? isDealer;
   @override
+  final String? isRegisterSuccess;
+  @override
+  final String? message;
+  @override
   final BuiltList<SelectListItemDto>? yearOfEstablishment;
   @override
   final BuiltList<SelectListItemDto>? availableIndustrySector;
@@ -252,6 +256,8 @@ class _$RegisterBusinessModelDto extends RegisterBusinessModelDto {
       this.uamNumber,
       this.demandAgreegatorNumber,
       this.isDealer,
+      this.isRegisterSuccess,
+      this.message,
       this.yearOfEstablishment,
       this.availableIndustrySector,
       this.availableIndustryType,
@@ -349,6 +355,8 @@ class _$RegisterBusinessModelDto extends RegisterBusinessModelDto {
         uamNumber == other.uamNumber &&
         demandAgreegatorNumber == other.demandAgreegatorNumber &&
         isDealer == other.isDealer &&
+        isRegisterSuccess == other.isRegisterSuccess &&
+        message == other.message &&
         yearOfEstablishment == other.yearOfEstablishment &&
         availableIndustrySector == other.availableIndustrySector &&
         availableIndustryType == other.availableIndustryType &&
@@ -435,6 +443,8 @@ class _$RegisterBusinessModelDto extends RegisterBusinessModelDto {
     _$hash = $jc(_$hash, uamNumber.hashCode);
     _$hash = $jc(_$hash, demandAgreegatorNumber.hashCode);
     _$hash = $jc(_$hash, isDealer.hashCode);
+    _$hash = $jc(_$hash, isRegisterSuccess.hashCode);
+    _$hash = $jc(_$hash, message.hashCode);
     _$hash = $jc(_$hash, yearOfEstablishment.hashCode);
     _$hash = $jc(_$hash, availableIndustrySector.hashCode);
     _$hash = $jc(_$hash, availableIndustryType.hashCode);
@@ -524,6 +534,8 @@ class _$RegisterBusinessModelDto extends RegisterBusinessModelDto {
           ..add('uamNumber', uamNumber)
           ..add('demandAgreegatorNumber', demandAgreegatorNumber)
           ..add('isDealer', isDealer)
+          ..add('isRegisterSuccess', isRegisterSuccess)
+          ..add('message', message)
           ..add('yearOfEstablishment', yearOfEstablishment)
           ..add('availableIndustrySector', availableIndustrySector)
           ..add('availableIndustryType', availableIndustryType)
@@ -906,6 +918,15 @@ class RegisterBusinessModelDtoBuilder
   bool? get isDealer => _$this._isDealer;
   set isDealer(bool? isDealer) => _$this._isDealer = isDealer;
 
+  String? _isRegisterSuccess;
+  String? get isRegisterSuccess => _$this._isRegisterSuccess;
+  set isRegisterSuccess(String? isRegisterSuccess) =>
+      _$this._isRegisterSuccess = isRegisterSuccess;
+
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
+
   ListBuilder<SelectListItemDto>? _yearOfEstablishment;
   ListBuilder<SelectListItemDto> get yearOfEstablishment =>
       _$this._yearOfEstablishment ??= new ListBuilder<SelectListItemDto>();
@@ -1017,6 +1038,8 @@ class RegisterBusinessModelDtoBuilder
       _uamNumber = $v.uamNumber;
       _demandAgreegatorNumber = $v.demandAgreegatorNumber;
       _isDealer = $v.isDealer;
+      _isRegisterSuccess = $v.isRegisterSuccess;
+      _message = $v.message;
       _yearOfEstablishment = $v.yearOfEstablishment?.toBuilder();
       _availableIndustrySector = $v.availableIndustrySector?.toBuilder();
       _availableIndustryType = $v.availableIndustryType?.toBuilder();
@@ -1123,6 +1146,8 @@ class RegisterBusinessModelDtoBuilder
               uamNumber: uamNumber,
               demandAgreegatorNumber: demandAgreegatorNumber,
               isDealer: isDealer,
+              isRegisterSuccess: isRegisterSuccess,
+              message: message,
               yearOfEstablishment: _yearOfEstablishment?.build(),
               availableIndustrySector: _availableIndustrySector?.build(),
               availableIndustryType: _availableIndustryType?.build(),

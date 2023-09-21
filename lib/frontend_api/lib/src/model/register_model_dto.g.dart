@@ -140,6 +140,10 @@ class _$RegisterModelDto extends RegisterModelDto {
   @override
   final BuiltList<GdprConsentModelDto>? gdprConsents;
   @override
+  final String? isRegisterSuccess;
+  @override
+  final String? message;
+  @override
   final BuiltMap<String, String?>? customProperties;
 
   factory _$RegisterModelDto(
@@ -213,6 +217,8 @@ class _$RegisterModelDto extends RegisterModelDto {
       this.displayCaptcha,
       this.customerAttributes,
       this.gdprConsents,
+      this.isRegisterSuccess,
+      this.message,
       this.customProperties})
       : super._();
 
@@ -295,6 +301,8 @@ class _$RegisterModelDto extends RegisterModelDto {
         displayCaptcha == other.displayCaptcha &&
         customerAttributes == other.customerAttributes &&
         gdprConsents == other.gdprConsents &&
+        isRegisterSuccess == other.isRegisterSuccess &&
+        message == other.message &&
         customProperties == other.customProperties;
   }
 
@@ -367,6 +375,8 @@ class _$RegisterModelDto extends RegisterModelDto {
     _$hash = $jc(_$hash, displayCaptcha.hashCode);
     _$hash = $jc(_$hash, customerAttributes.hashCode);
     _$hash = $jc(_$hash, gdprConsents.hashCode);
+    _$hash = $jc(_$hash, isRegisterSuccess.hashCode);
+    _$hash = $jc(_$hash, message.hashCode);
     _$hash = $jc(_$hash, customProperties.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -442,6 +452,8 @@ class _$RegisterModelDto extends RegisterModelDto {
           ..add('displayCaptcha', displayCaptcha)
           ..add('customerAttributes', customerAttributes)
           ..add('gdprConsents', gdprConsents)
+          ..add('isRegisterSuccess', isRegisterSuccess)
+          ..add('message', message)
           ..add('customProperties', customProperties))
         .toString();
   }
@@ -770,6 +782,15 @@ class RegisterModelDtoBuilder
   set gdprConsents(ListBuilder<GdprConsentModelDto>? gdprConsents) =>
       _$this._gdprConsents = gdprConsents;
 
+  String? _isRegisterSuccess;
+  String? get isRegisterSuccess => _$this._isRegisterSuccess;
+  set isRegisterSuccess(String? isRegisterSuccess) =>
+      _$this._isRegisterSuccess = isRegisterSuccess;
+
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
+
   MapBuilder<String, String?>? _customProperties;
   MapBuilder<String, String?> get customProperties =>
       _$this._customProperties ??= new MapBuilder<String, String?>();
@@ -849,6 +870,8 @@ class RegisterModelDtoBuilder
       _displayCaptcha = $v.displayCaptcha;
       _customerAttributes = $v.customerAttributes?.toBuilder();
       _gdprConsents = $v.gdprConsents?.toBuilder();
+      _isRegisterSuccess = $v.isRegisterSuccess;
+      _message = $v.message;
       _customProperties = $v.customProperties?.toBuilder();
       _$v = null;
     }
@@ -941,6 +964,8 @@ class RegisterModelDtoBuilder
               displayCaptcha: displayCaptcha,
               customerAttributes: _customerAttributes?.build(),
               gdprConsents: _gdprConsents?.build(),
+              isRegisterSuccess: isRegisterSuccess,
+              message: message,
               customProperties: _customProperties?.build());
     } catch (_) {
       late String _$failedField;
@@ -958,6 +983,7 @@ class RegisterModelDtoBuilder
         _customerAttributes?.build();
         _$failedField = 'gdprConsents';
         _gdprConsents?.build();
+
         _$failedField = 'customProperties';
         _customProperties?.build();
       } catch (e) {

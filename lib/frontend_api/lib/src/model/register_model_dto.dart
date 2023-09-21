@@ -81,6 +81,8 @@ part 'register_model_dto.g.dart';
 /// * [displayCaptcha]
 /// * [customerAttributes]
 /// * [gdprConsents]
+/// * [isRegisterSuccess]
+/// * [message]
 /// * [customProperties]
 @BuiltValue()
 abstract class RegisterModelDto implements Built<RegisterModelDto, RegisterModelDtoBuilder> {
@@ -281,6 +283,12 @@ abstract class RegisterModelDto implements Built<RegisterModelDto, RegisterModel
 
   @BuiltValueField(wireName: r'gdpr_consents')
   BuiltList<GdprConsentModelDto>? get gdprConsents;
+
+  @BuiltValueField(wireName: r'is_register_success')
+  String? get isRegisterSuccess;
+
+  @BuiltValueField(wireName: r'message')
+  String? get message;
 
   @BuiltValueField(wireName: r'custom_properties')
   BuiltMap<String, String?>? get customProperties;
@@ -768,6 +776,20 @@ class _$RegisterModelDtoSerializer implements PrimitiveSerializer<RegisterModelD
       yield serializers.serialize(
         object.gdprConsents,
         specifiedType: const FullType.nullable(BuiltList, [FullType(GdprConsentModelDto)]),
+      );
+    }
+    if (object.isRegisterSuccess != null) {
+      yield r'is_register_success';
+      yield serializers.serialize(
+        object.isRegisterSuccess,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.message != null) {
+      yield r'message';
+      yield serializers.serialize(
+        object.message,
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.customProperties != null) {
@@ -1287,6 +1309,22 @@ class _$RegisterModelDtoSerializer implements PrimitiveSerializer<RegisterModelD
           ) as BuiltList<GdprConsentModelDto>?;
           if (valueDes == null) continue;
           result.gdprConsents.replace(valueDes);
+          break;
+        case r'is_register_success':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.isRegisterSuccess = valueDes;
+          break;
+        case r'message':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.message = valueDes;
           break;
         case r'custom_properties':
           final valueDes = serializers.deserialize(

@@ -59,7 +59,8 @@ class CustomerTextFormField extends ConsumerStatefulWidget {
   }) {
     _metaData.key = key ?? Key('TextFormField.$name');
 
-    _metaData.validator = TextValidator(name, isEmail: isEmail, notEmpty: notEmpty, minLength: minLength, maxLength: maxLength, required: required);
+    _metaData.validator =
+        TextValidator(name, isEmail: isEmail, notEmpty: notEmpty, minLength: minLength, maxLength: maxLength, required: required);
   }
 
   @override
@@ -156,7 +157,8 @@ class TextValidator {
 
   final String fieldName;
 
-  TextValidator(this.fieldName, {this.minLength, this.maxLength, this.required = false, this.notEmpty = false, this.isEmail = false}) {
+  TextValidator(this.fieldName,
+      {this.minLength, this.maxLength, this.required = false, this.notEmpty = false, this.isEmail = false}) {
     if (minLength != null) {
       _minLengthValidator = MinLengthStringValidator(minLength!);
     }

@@ -94,6 +94,8 @@ part 'register_business_model_dto.g.dart';
 /// * [uamNumber]
 /// * [demandAgreegatorNumber]
 /// * [isDealer]
+/// * [isRegisterSuccess]
+/// * [message]
 /// * [yearOfEstablishment]
 /// * [availableIndustrySector]
 /// * [availableIndustryType]
@@ -329,6 +331,12 @@ abstract class RegisterBusinessModelDto implements Built<RegisterBusinessModelDt
 
   @BuiltValueField(wireName: r'is_dealer')
   bool? get isDealer;
+
+  @BuiltValueField(wireName: r'is_register_success')
+  String? get isRegisterSuccess;
+
+  @BuiltValueField(wireName: r'message')
+  String? get message;
 
   @BuiltValueField(wireName: r'year_of_establishment')
   BuiltList<SelectListItemDto>? get yearOfEstablishment;
@@ -902,6 +910,20 @@ class _$RegisterBusinessModelDtoSerializer implements PrimitiveSerializer<Regist
       yield serializers.serialize(
         object.isDealer,
         specifiedType: const FullType.nullable(bool),
+      );
+    }
+    if (object.isRegisterSuccess != null) {
+      yield r'is_register_success';
+      yield serializers.serialize(
+        object.isRegisterSuccess,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.message != null) {
+      yield r'message';
+      yield serializers.serialize(
+        object.message,
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.yearOfEstablishment != null) {
@@ -1516,6 +1538,22 @@ class _$RegisterBusinessModelDtoSerializer implements PrimitiveSerializer<Regist
             specifiedType: const FullType(bool),
           ) as bool;
           result.isDealer = valueDes;
+          break;
+        case r'is_register_success':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.isRegisterSuccess = valueDes;
+          break;
+        case r'message':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.message = valueDes;
           break;
         case r'year_of_establishment':
           final valueDes = serializers.deserialize(
