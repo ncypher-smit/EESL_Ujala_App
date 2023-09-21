@@ -1,0 +1,25 @@
+# frontend_api.model.ContactVendorModelDto
+
+## Load the model package
+```dart
+import 'package:frontend_api/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**vendorId** | **int** |  | [optional] 
+**vendorName** | **String** |  | [optional] 
+**email** | **String** |  | [optional] 
+**subject** | **String** |  | [optional] 
+**subjectEnabled** | **bool** |  | [optional] 
+**enquiry** | **String** |  | [optional] 
+**fullName** | **String** |  | [optional] 
+**successfullySent** | **bool** |  | [optional] 
+**result** | **String** |  | [optional] 
+**displayCaptcha** | **bool** |  | [optional] 
+**customProperties** | **BuiltMap&lt;String, String&gt;** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
